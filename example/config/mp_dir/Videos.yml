@@ -1,0 +1,7 @@
+Name: videos
+Version: 1.0.39
+PrivIP: tasks.api
+PubIP: tasks.videos
+Hosts: [videos.example.com]
+Port: 443
+Basepath: "v{{.Version}}"

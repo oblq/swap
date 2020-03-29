@@ -1,0 +1,4 @@
+Name: picturesProcessing
+Version: 1
+PrivIP: tasks.pictures # Docker Swarm
+Hosts: [localhost]

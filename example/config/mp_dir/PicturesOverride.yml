@@ -1,0 +1,5 @@
+Name: pictures # name overriden
+Version: 2
+PubIP: 127.0.0.1 # local development
+Hosts: [lvh.me] # host overriden
+Basepath: "{{.Name}}/v{{.Version}}"
