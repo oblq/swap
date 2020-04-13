@@ -2,7 +2,7 @@
 
 ![GitHub tag](https://img.shields.io/github/tag/oblq/swap.svg)
 [![Build Status](https://travis-ci.org/oblq/swap.svg?branch=master)](https://travis-ci.org/oblq/swap)
-[![codecov](https://codecov.io/gh/oblq/swap/branch/master/graph/badge.svg)](https://codecov.io/gh/oblq/swap)
+![Codecov branch](https://img.shields.io/codecov/c/github/oblq/swap/master?token=3d8726b174c04630bb8cac3b31d9467d)
 [![Go Report Card](https://goreportcard.com/badge/github.com/oblq/swap)](https://goreportcard.com/report/github.com/oblq/swap)
 [![GoDoc](https://godoc.org/github.com/oblq/swap?status.svg)](https://godoc.org/github.com/oblq/swap)
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
