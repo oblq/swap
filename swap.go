@@ -490,10 +490,16 @@ func getLogString(sf *reflect.StructField, state state, err error, level int, co
 			return fmt.Sprintf("%s %s\n", objNameType, outArrow+logger.LightGrey(state.string()))
 
 		case stateConfigured:
+			for i, file := range configFiles {
+				configFiles[i] = filepath.Base(file)
+			}
 			return fmt.Sprintf("%s %-49s <- (%s)\n",
 				objNameType, inArrow+logger.Green(state.string()), logger.LightGrey(strings.Join(configFiles, ", ")))
 
 		case stateMadeFromInterface, stateMadeFromRegisteredFactory:
+			for i, file := range configFiles {
+				configFiles[i] = filepath.Base(file)
+			}
 			return fmt.Sprintf("%s %-49s <- (%s)\n",
 				objNameType, inArrow+logger.Blue(state.string()), logger.LightGrey(strings.Join(configFiles, ", ")))
 
