@@ -1,7 +1,6 @@
 # Swap
 
 ![GitHub tag](https://img.shields.io/github/tag/oblq/swap.svg)
-![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/oblq/swap)
 [![Build Status](https://travis-ci.org/oblq/swap.svg?branch=master)](https://travis-ci.org/oblq/swap)
 ![Codecov branch](https://img.shields.io/codecov/c/github/oblq/swap/master?token=3d8726b174c04630bb8cac3b31d9467d)
 [![Go Report Card](https://goreportcard.com/badge/github.com/oblq/swap)](https://goreportcard.com/report/github.com/oblq/swap)
