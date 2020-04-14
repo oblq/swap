@@ -404,11 +404,11 @@ func (s state) string() string {
 	case stateTraversing:
 		return "traversing"
 	case stateConfigured:
-		return "configured (`Configurable` interface)"
+		return "configured"
 	case stateMadeFromInterface:
-		return "made (`Factory` interface)"
+		return "made with `Factory` interface"
 	case stateMadeFromRegisteredFactory:
-		return "made (`FactoryFunc` registered)"
+		return "made with registered `FactoryFunc`"
 	default:
 		return ""
 	}
