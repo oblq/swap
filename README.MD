@@ -100,7 +100,7 @@ func init() {
 
 And this is the result in console:
 
-![build](swap_build.png)
+![build](swap.png)
 
 ### Builder
 
