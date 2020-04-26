@@ -9,6 +9,7 @@ import (
 	"github.com/oblq/swap"
 )
 
+// PublicIP is the prefetched machine public IP.
 var PublicIP string
 
 func init() {
@@ -26,15 +27,19 @@ func init() {
 
 // ExtendedURL ---------------------------------------------------------------------------------------------------------
 
+// ExtendedURL is an url.URL extension with two
+// simple helpers to append a path and query-parameters.
 type ExtendedURL struct {
 	url.URL
 }
 
+// WithPath add a path to the url.
 func (eu *ExtendedURL) WithPath(urlPath string) *ExtendedURL {
 	eu.URL.Path = path.Join(eu.URL.Path, urlPath)
 	return eu
 }
 
+// WithQueryParams add query parameters to the url by passing a map.
 func (eu *ExtendedURL) WithQueryParams(queryParams *map[string]string) *ExtendedURL {
 	if queryParams != nil {
 		q := eu.URL.Query()

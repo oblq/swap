@@ -26,8 +26,9 @@ const (
 // FileSearchCaseSensitive determine config files search mode, false by default.
 var FileSearchCaseSensitive bool
 
+// SetColoredLogs enable / disable colors in the stdOut.
 func SetColoredLogs(enabled bool) {
-	logger.DisabelColors = !enabled
+	logger.DisableColors = !enabled
 }
 
 // Configurable interface ----------------------------------------------------------------------------------------------
@@ -58,6 +59,9 @@ type debugOptions struct {
 	HideSkipped   bool
 }
 
+// Builder recursively build/configure struct fields
+// on the given struct, choosing the right configuration files
+// based on the build environment.
 type Builder struct {
 	typeFactories map[reflect.Type]FactoryFunc
 
@@ -85,6 +89,8 @@ func NewBuilder(configsPath string) *Builder {
 	}
 }
 
+// WithCustomEnvHandler return the same instance of the Builder
+// but with the custom environmentHandler.
 func (s *Builder) WithCustomEnvHandler(eh *EnvironmentHandler) *Builder {
 	s.mutex.Lock()
 	defer s.mutex.Unlock()
@@ -355,9 +361,9 @@ func (s *Builder) configure(fv reflect.Value, configFiles []string) (configEnvFi
 			return configEnvFiles, err
 		}
 		return configEnvFiles, fv.Addr().Interface().(Configurable).Configure(configEnvFiles...)
-	} else {
-		return configEnvFiles, errNotConfigurable
 	}
+
+	return configEnvFiles, errNotConfigurable
 }
 
 func (s *Builder) debug(objName string, logs []string) {

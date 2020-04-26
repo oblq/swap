@@ -3,7 +3,7 @@ package tools
 // Example:
 // Not loadable tool.
 
-// Tool is a struct example that does not implement
+// ToolNotRecognized is a struct example that does not implement
 // the `Configurable`, nor the `Factory` interface natively and
 // nor it has a registered `FactoryFunc`.
 type ToolNotRecognized struct {

@@ -2,10 +2,12 @@ package tests
 
 import (
 	"errors"
+	"fmt"
 	"reflect"
 	"testing"
 
 	"github.com/oblq/swap"
+	"github.com/oblq/swap/internal/logger"
 	"github.com/stretchr/testify/require"
 )
 
@@ -154,7 +156,7 @@ func TestMixedBox(t *testing.T) {
 			return instance, err
 		})
 
-	//fmt.Println(swap.Info())
+	fmt.Println(logger.Cyan(builder.EnvHandler.Sources.Git.Build))
 	var test Box
 	err := builder.Build(&test)
 
@@ -333,8 +335,10 @@ func TestConfigFiles(t *testing.T) {
 
 func TestBoxTags(t *testing.T) {
 	builder := swap.NewBuilder(configPath)
+	customEH := swap.NewEnvironmentHandler(swap.DefaultEnvs.Slice())
+	builder = builder.WithCustomEnvHandler(customEH)
 	builder.EnvHandler.SetCurrent("dev")
-
+	builder.DebugOptions.HideSkipped = false
 	defaultToolConfig := ToolConfig{TestString: "0"}
 	devConfig := defaultToolConfig
 	devpath := "dev"

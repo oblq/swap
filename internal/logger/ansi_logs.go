@@ -4,7 +4,8 @@ import (
 	"fmt"
 )
 
-var DisabelColors = false
+// DisableColors turn off colors code injections.
+var DisableColors = false
 
 type color string
 
@@ -26,6 +27,8 @@ const (
 	clear = "\033[0m"
 )
 
+// Painter define a func that return a colored
+// string representation of the passed argument.
 type Painter func(interface{}) string
 
 // White return the argument as a color escaped string
@@ -81,13 +84,13 @@ func Magenta(arg interface{}) string {
 // colored return the ANSI colored formatted string.
 func colored(arg interface{}, color color) string {
 	argString := fmt.Sprint(arg)
-	if len(argString) > 0 && len(color) > 0 && !DisabelColors {
+	if len(argString) > 0 && len(color) > 0 && !DisableColors {
 		return fmt.Sprintf("%s%s%s%s", esc, color, arg, clear)
 	}
 	return argString
 }
 
-// kv is an ansi instance type for Key-Value logging.
+// KVLogger is an ansi instance type for Key-Value logging.
 type KVLogger struct {
 	KeyPainter   Painter
 	ValuePainter Painter
@@ -100,6 +103,8 @@ func (kv *KVLogger) Sprint(key interface{}, value interface{}) string {
 	return fmt.Sprintf("%s%s", k, v)
 }
 
+// Ansify return a colored string representation
+// of the key-value couple.
 func (kv *KVLogger) Ansify(key interface{}, value interface{}) (string, string) {
 	var k, v string
 

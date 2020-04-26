@@ -6,7 +6,7 @@ import "github.com/oblq/swap"
 // How to load a package which need more
 // control during initialization.
 
-// Tool is a struct example that implement
+// ToolWFactory is a struct example that implement
 // the `Configurable` interface natively.
 type ToolWFactory struct {
 	Text string `yaml:"text"`

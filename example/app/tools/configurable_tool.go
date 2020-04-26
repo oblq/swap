@@ -7,7 +7,7 @@ import (
 // Example:
 // How to load a package easily and automatically.
 
-// Tool is a struct example that implement
+// ToolConfigurable is a struct example that implement
 // the `Configurable` interface natively.
 type ToolConfigurable struct {
 	Text string `yaml:"text"`

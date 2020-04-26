@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/oblq/swap.svg?branch=master)](https://travis-ci.org/oblq/swap)
 ![Codecov branch](https://img.shields.io/codecov/c/github/oblq/swap/master?token=3d8726b174c04630bb8cac3b31d9467d)
 [![Go Report Card](https://goreportcard.com/badge/github.com/oblq/swap)](https://goreportcard.com/report/github.com/oblq/swap)
-[![GoDoc](https://godoc.org/github.com/oblq/swap?status.svg)](https://godoc.org/github.com/oblq/swap)
+[![pkg.go.dev](https://img.shields.io/badge/pkg.go.dev-reference-blue)](https://pkg.go.dev/github.com/oblq/swap?tab=doc)
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
 Dynamically instantiate and configure structs and/or parse config files in to them recursively, based on your build environment.  

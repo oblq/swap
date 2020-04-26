@@ -3,7 +3,7 @@ package tools
 // Example:
 // How to load a third-party package.
 
-// Tool is a struct example that does not implement
+// ToolRegistered is a struct example that does not implement
 // the `Configurable` nor the `Factory` interface natively.
 type ToolRegistered struct {
 	Text string `yaml:"text"`

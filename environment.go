@@ -91,7 +91,7 @@ func (de defaultEnvs) Slice() []*Environment {
 	}
 }
 
-// Default environment's configurations.
+// DefaultEnvs contains the default environment's configurations.
 var DefaultEnvs = defaultEnvs{
 	Production:  NewEnvironment("production", `(production)|(master)|(^v(0|[1-9]+)(\\.(0|[1-9]+)+)?(\\.(\\*|(0|[1-9]+)+))?$)`),
 	Staging:     NewEnvironment("staging", `(staging)|(release/*)|(hotfix/*)|(bugfix/*)`),
@@ -102,6 +102,8 @@ var DefaultEnvs = defaultEnvs{
 
 //----------------------------------------------------------------------------------------------------------------------
 
+// Sources define alternative methods
+// to obtain the current environment.
 type Sources struct {
 	// directEnvironmentTag can be used to directly define the current environment.
 	// By default, the value of `InterpolableEnvTag` is set.
@@ -117,6 +119,7 @@ type Sources struct {
 	Git *Repository
 }
 
+// EnvironmentHandler is the object that manges the environment.
 type EnvironmentHandler struct {
 	// Sources define the sources used to determine the current environment.
 	Sources *Sources
@@ -199,7 +202,7 @@ func (eh *EnvironmentHandler) Current() *Environment {
 
 // Git -----------------------------------------------------------------------------------------------------------------
 
-// gitRepository represent a git repository
+// Repository represent a git repository.
 type Repository struct {
 	path                           string
 	BranchName, Commit, Build, Tag string
@@ -208,7 +211,7 @@ type Repository struct {
 	mutex sync.Mutex
 }
 
-// NewRepository return a new gitRepository instance for the given path
+// NewGitRepository return a new *Repository instance for the given path.
 func NewGitRepository(path string) *Repository {
 	repo := &Repository{path: path}
 	defer repo.updateInfo()
