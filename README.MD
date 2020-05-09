@@ -1,5 +1,6 @@
 # Swap
 
+[![Mentioned in Awesome Go](https://awesome.re/mentioned-badge.svg)](https://github.com/avelino/awesome-go)
 ![GitHub tag](https://img.shields.io/github/tag/oblq/swap.svg)
 [![Build Status](https://travis-ci.org/oblq/swap.svg?branch=master)](https://travis-ci.org/oblq/swap)
 ![Codecov branch](https://img.shields.io/codecov/c/github/oblq/swap/master?token=3d8726b174c04630bb8cac3b31d9467d)
