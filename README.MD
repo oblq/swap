@@ -14,8 +14,8 @@ Keep your projects and their configuration files ordered and maintainable while 
 **Swap** package is based on three different tools:
 
 - The **Builder** which recursively builds/configures structs with the help of some abstract Factory methods, and the two other tools below.
-- An **EnvironmentHandler** which always determine the current environment, needed to determine which configurations to use. Can be used indipendently.
-- An agnostic, layered, **ConfigParser** (YAML, JSON, TOML and Env) which can also be used in conjunction with the EnvironmentHandler and/or indipendently.  
+- An **EnvironmentHandler** which always determine the current environment, needed to determine which configurations to use. Can be used independently.
+- An agnostic, layered, **ConfigParser** (YAML, JSON, TOML and Env) which can also be used in conjunction with the EnvironmentHandler and/or independently.  
 
 ## Installation
 
