@@ -10,7 +10,7 @@ import (
 )
 
 func TestEnvironmentHnadler(t *testing.T) {
-	eh := swap.NewBuilder("").EnvHandler
+	eh := swap.NewBuilder(swap.NewFileSystemLocal("")).EnvHandler
 
 	eh.SetCurrent(swap.DefaultEnvs.Local.Tag())
 	require.Equal(t, swap.DefaultEnvs.Local, eh.Current())

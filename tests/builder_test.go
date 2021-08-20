@@ -145,7 +145,7 @@ func TestMixedBox(t *testing.T) {
 
 	swap.FileSearchCaseSensitive = true
 
-	builder := swap.NewBuilder(configPath)
+	builder := swap.NewBuilder(swap.NewFileSystemLocal(configPath))
 	builder.DebugOptions.Enabled = true
 	//builder.DebugLevel = 3
 	builder.DebugOptions.HideUnhandled = false
@@ -185,7 +185,7 @@ func TestFactoryFuncWrongTypeBox(t *testing.T) {
 	defer removeConfigFiles(t)
 
 	var test Box
-	builder := swap.NewBuilder(configPath)
+	builder := swap.NewBuilder(swap.NewFileSystemLocal(configPath))
 	builder.DebugOptions.Enabled = true
 	err := builder.Build(&test)
 	require.NotNil(t, err)
@@ -220,7 +220,7 @@ func TestBoxNested(t *testing.T) {
 	}
 
 	var test BoxNested
-	builder := swap.NewBuilder(configPath)
+	builder := swap.NewBuilder(swap.NewFileSystemLocal(configPath))
 	builder.DebugOptions.Enabled = true
 	swap.SetColoredLogs(false)
 	err := builder.Build(&test)
@@ -237,7 +237,7 @@ func TestBoxError(t *testing.T) {
 	}
 
 	var test BoxError
-	builder := swap.NewBuilder(configPath)
+	builder := swap.NewBuilder(swap.NewFileSystemLocal(configPath))
 	err := builder.Build(&test)
 	require.NotNil(t, err)
 }
@@ -252,13 +252,13 @@ func TestPTRToolError(t *testing.T) {
 	}
 
 	var test PTRToolError
-	builder := swap.NewBuilder(configPath)
+	builder := swap.NewBuilder(swap.NewFileSystemLocal(configPath))
 	err := builder.Build(&test)
 	require.NotNil(t, err)
 }
 
 func TestInvalidPointer(t *testing.T) {
-	builder := swap.NewBuilder(configPath)
+	builder := swap.NewBuilder(swap.NewFileSystemLocal(configPath))
 
 	var test1 *string
 	err := builder.Build(&test1)
@@ -286,7 +286,7 @@ func TestNilBox(t *testing.T) {
 		Tool2 *ToolConfigurable
 	}
 
-	builder := swap.NewBuilder(configPath)
+	builder := swap.NewBuilder(swap.NewFileSystemLocal(configPath))
 
 	var test1 BoxNil
 	err := builder.Build(&test1)
@@ -315,7 +315,7 @@ func TestConfigFiles(t *testing.T) {
 	}
 
 	var test1 BoxConfigFiles
-	require.Error(t, swap.NewBuilder(configPath).Build(&test1))
+	require.Error(t, swap.NewBuilder(swap.NewFileSystemLocal(configPath)).Build(&test1))
 
 	defaultToolConfig := ToolConfig{TestString: "0"}
 	createYAML(defaultToolConfig, "Tool1.yml", t)
@@ -325,7 +325,7 @@ func TestConfigFiles(t *testing.T) {
 
 	var test2 BoxConfigFiles
 
-	if err := swap.NewBuilder(configPath).Build(&test2); err != nil {
+	if err := swap.NewBuilder(swap.NewFileSystemLocal(configPath)).Build(&test2); err != nil {
 		t.Error(err)
 	}
 	require.NotEqual(t, 0, len(test2.Tool1.Config.TestString))
@@ -334,7 +334,7 @@ func TestConfigFiles(t *testing.T) {
 }
 
 func TestBoxTags(t *testing.T) {
-	builder := swap.NewBuilder(configPath)
+	builder := swap.NewBuilder(swap.NewFileSystemLocal(configPath))
 	customEH := swap.NewEnvironmentHandler(swap.DefaultEnvs.Slice())
 	builder = builder.WithCustomEnvHandler(customEH)
 	builder.EnvHandler.SetCurrent("dev")
@@ -388,7 +388,7 @@ func TestBoxAfterConfig(t *testing.T) {
 	test := BoxAfterConfig{}
 	test.Tool2 = ToolConfigurable{Config: ToolConfig{TestString: tString}}
 	test.Tool3 = &ToolConfigurable{Config: ToolConfig{TestString: tString}}
-	if err := swap.NewBuilder(configPath).Build(&test); err != nil {
+	if err := swap.NewBuilder(swap.NewFileSystemLocal(configPath)).Build(&test); err != nil {
 		t.Error(err)
 	}
 

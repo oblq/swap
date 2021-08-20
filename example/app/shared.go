@@ -60,7 +60,7 @@ func init() {
 	//swap.DefaultEnvs.Production.regexp = regexp.MustCompile(`(my_custom_env)|(custom)`)
 
 	// Get a new instance of swap with our custom *environmentHandler
-	var builder = swap.NewBuilder("./config").WithCustomEnvHandler(EnvHandler)
+	var builder = swap.NewBuilder(swap.NewFileSystemLocal("./config")).WithCustomEnvHandler(EnvHandler)
 
 	// Set the current build environment manually, our `custom` one.
 	builder.EnvHandler.SetCurrent("custom")
