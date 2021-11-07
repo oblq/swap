@@ -14,15 +14,16 @@ import (
 
 // sff: Struct field flags.
 const (
-	// struct field tag key
+	// struct field tag key, takes additional
+	// config files path, relatives to the
+	// initial one provided in on init.
 	sftBuilderKey = "swap"
 
 	// to skip a struct field
 	sffBuilderSkip = "-"
 )
 
-// this is automatically set when the builder constructor is called
-// so that
+// This is automatically set when the builder constructor is called.
 var globalFS = NewFileSystemLocal(".")
 
 // ---------------------------------------------------------------------------------------------------------------------
@@ -132,8 +133,8 @@ func (b *Builder) Build(toolBox interface{}) (err error) {
 	}
 
 	debugLogs, err := b.build(nil, v, 0)
-	fmt.Printf("\nSwap: %s\n", b.EnvHandler.Current().Info())
 	if b.DebugOptions.Enabled {
+		fmt.Printf("\nSwap: %s\n", b.EnvHandler.Current().Info())
 		b.debug(t.Name(), debugLogs)
 	}
 	return err

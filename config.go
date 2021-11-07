@@ -26,16 +26,16 @@ const (
 	sftConfigKey = "swapcp"
 
 	// return error if missing value
-	// eg.: `swap:"required"`
+	// e.g.: `swapcp:"required"`
 	sffConfigRequired = "required"
 
 	// sffEnv environment var value can be in json format,
 	// it also overrides the default value.
-	// eg.: `swap:"env=env_var_name"`
+	// e.g.: `swapcp:"env=env_var_name"`
 	sffConfigEnv = "env"
 
 	// set the default value
-	// eg.: `swap:"default=1"`
+	// e.g.: `swapcp:"default=1"`
 	sffConfigDefault = "default"
 )
 
