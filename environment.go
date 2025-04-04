@@ -93,7 +93,7 @@ func (de defaultEnvs) Slice() []*Environment {
 
 // DefaultEnvs contains the default environment's configurations.
 var DefaultEnvs = defaultEnvs{
-	Production:  NewEnvironment("production", `(production)|(master)|(^v(0|[1-9]+)(\\.(0|[1-9]+)+)?(\\.(\\*|(0|[1-9]+)+))?$)`),
+	Production:  NewEnvironment("production", `(production)|(main)|(master)|(^v(0|[1-9]+)(\\.(0|[1-9]+)+)?(\\.(\\*|(0|[1-9]+)+))?$)`),
 	Staging:     NewEnvironment("staging", `(staging)|(release/*)|(hotfix/*)|(bugfix/*)`),
 	Testing:     NewEnvironment("testing", `(testing)|(test)`),
 	Development: NewEnvironment("development", `(development)|(develop)|(dev)|(feature/*)`),
